@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Quick Tip</string>
+
+    <!--EN-->
+    <!--TextViews-->
+    <string name="instructionTV">Enter your final bill:</string>
+    <string name="rateTV">Rate your service</string>
+    <string name="languageTV">Language</string>
+    <string name="settings_menuTV">Settings Menu</string>
+    <string name="tipInfoTV">% of your total bill</string>
+    <string name="totalBillTV">Your total bill is:</string>
+    <string name="resultTextTV">The right tip is:</string>
+    <!--Other elements (Buttons, etc...)-->
+    <string name="calculateButton">Calculate</string>
+    <string name="saveButton">Save</string>
+    <!--Switches-->
+    <string name="service_bad">Poor</string>
+    <string name="serviceOk">OK</string>
+    <string name="serviceExc">Excellent</string>
+    <string name="lang">EN</string>
+    <!--Titles?-->
+    <string name="title_activity_settings">Settings</string>
+
+    <!--(!) All russian string values are stored in strings_RU.xml (!)-->
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--RU-->
+    <!--TextViews-->
+    <string name="instructionTVRu">Введите сумму чека:</string>
+    <string name="rateTVRu">Оцените обслуживание</string>
+    <string name="languageTVRu">Язык</string>
+    <string name="settings_menuTVRu">Настройки</string>
+    <string name="tipInfoTVRu">% от Вашего чека</string>
+    <string name="totalBillTVRu">Вся сумма чека: </string>
+    <string name="resultTextTVRu">Чаевые от чека: </string>
+    <!--Buttons-->
+    <string name="calculateButtonRu">Посчитать</string>
+    <string name="saveButtonRu">Сохранить</string>
+    <!--Switches-->
+    <string name="service_badRu">Плохо</string>
+    <string name="serviceOkRu">OK</string>
+    <string name="serviceExcRu">Отлично</string>
+    <string name="langRu">EN</string>
+</resources>

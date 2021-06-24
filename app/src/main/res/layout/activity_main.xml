@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="411dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:adSize="BANNER"
+            app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/instructionTV"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <EditText
+            android:id="@+id/finalBill"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="100dp"
+            android:ems="10"
+            android:fontFamily="@font/open_sans_semibold"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ratingText"
+            android:layout_width="211dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="100dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:text="@string/rateTV"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal">
+
+            <Switch
+                android:id="@+id/poorSwitch"
+                android:layout_width="91dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/service_bad"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="14sp" />
+
+            <Switch
+                android:id="@+id/okSwitch"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/serviceOk"
+                android:textAlignment="center"
+                android:textAllCaps="true" />
+
+            <Switch
+                android:id="@+id/excelSwitch"
+                android:layout_width="125dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="60dp"
+                android:layout_marginBottom="60dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/serviceExc"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="314dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/totalBill"
+                android:layout_width="311dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/totalBillTV"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/tipInfo"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="115dp"
+                android:layout_marginEnd="115dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/tipInfoTV"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/resultText"
+                android:layout_width="211dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginBottom="15dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:text="@string/resultTextTV"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:visibility="invisible" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
