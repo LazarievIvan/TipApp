@@ -9,13 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    //should implement classes for switches as Switcher class
     private var tip = Tip()
-    //private var switchedSwitch: Boolean = false
-    lateinit var adView: AdView
+    private lateinit var adView: AdView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,18 +22,14 @@ class MainActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
 
-        //switches array
-        val serviceSwitches: List<Switch?> = getSwitches();
-        //set onCLick for switches
-        for(switch in serviceSwitches){
-            switch?.setOnClickListener { switchListener(serviceSwitches, switch) }
-        }
-
         //initialize EditText
-        val billInput: EditText? = findViewById(R.id.finalBill);
+        val billInput: EditText? = findViewById(R.id.finalBill)
+        var billAmount = 0
+        var rate = 10.0
         billInput?.addTextChangedListener(object : TextWatcher {
 
-            override fun afterTextChanged(s: Editable) {}
+            override fun afterTextChanged(s: Editable) {
+            }
 
             override fun beforeTextChanged(s: CharSequence, start: Int,
                                            count: Int, after: Int) {
@@ -44,61 +37,40 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                isSwitched(serviceSwitches)
+                if(checkInput(billInput)){
+                    billAmount = s.toString().toInt()
+                    tip.tipPercent = rate
+                    calculate(billAmount, tip.tipPercent)
+                }else{
+                    billAmount = 0
+                    hideTipInfo()
+                }
+            }
+        })
+        //initialize SeekBar
+        val rateBar: SeekBar? = findViewById(R.id.ratingSeekBar)
+        rateBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if(checkInput(billInput)){
+                    rate = (progress+10).toDouble()
+                    tip.tipPercent = rate
+                    calculate(billAmount, tip.tipPercent)
+                }
+            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                if(checkInput(billInput)) {
+                    tip.tipPercent = rate
+                    calculate(billAmount, tip.tipPercent)
+                }
+            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
             }
         })
     }
-
-    private fun getSwitches(): List<Switch?> {
-        val poorSwitch: Switch? = findViewById(R.id.poorSwitch)
-        val okSwitch: Switch? = findViewById(R.id.okSwitch)
-        val excelSwitch: Switch? = findViewById(R.id.excelSwitch)
-
-        val switchesList: List<Switch?> = listOf(poorSwitch, okSwitch, excelSwitch)
-        return switchesList
-    }
-
-    private fun isSwitched(switches: List<Switch?>){
-        checkInput();
-        for (switch in switches){
-            if(switch?.isChecked!!){
-                switchListener(switches, switch)
-            }
-        }
-    }
-
-    private fun switchListener(switches: List<Switch?>, clickedSwitch: Switch?) {
-        //getting the clicked switch
-        val clickedSwitchId = clickedSwitch?.id.toString()
-        val finalBill: Int;
-        //inputs
-        val billInput: EditText? = findViewById(R.id.finalBill)
-        if(checkInput()) {
-            finalBill = billInput?.text.toString().toInt()
-        }else{
-            finalBill = 0;
-        }
-            for (switch in switches) {
-                val switchId = switch?.id.toString()
-                if (switchId == clickedSwitchId) {
-                    switch?.isChecked = true
-                    //switchedSwitch = true
-                    when (clickedSwitch?.text) {
-                        "Poor" -> tip.tipPercent = 10.0
-                        "OK" -> tip.tipPercent = 15.0
-                        "Excellent" -> tip.tipPercent = 20.0
-                    }
-                } else if (switchId != clickedSwitchId) {
-                    switch?.isChecked = false
-                }
-            }
-            calculate(finalBill);
-    }
-    private fun calculate(bill: Int){
-        val totalTip = tip.makeTip(bill, tip.tipPercent)
+    private fun calculate(bill: Int, tipRate: Double){
+        val totalTip = tip.makeTip(bill, tipRate)
         val totalWithTip = bill + totalTip
-        val tipPercent = tip.tipPercent.toInt()
-        display(totalTip, totalWithTip, tipPercent)
+        display(totalTip, totalWithTip, tipRate.toInt())
     }
     private fun display(totalTip: Int, totalWithTip: Int, tipPercent: Int) {
         //TextViews
@@ -122,8 +94,15 @@ class MainActivity : AppCompatActivity() {
         tipInfoTV?.text = tipInfo
         totalBillTV?.text = totalBill
     }
-    private fun checkInput(): Boolean {
-        val input: EditText? = findViewById(R.id.finalBill)
+    private fun hideTipInfo(){
+        val resultTextTV: TextView? = findViewById(R.id.resultText)
+        val tipInfoTV: TextView? = findViewById(R.id.tipInfo)
+        val totalBillTV: TextView? = findViewById(R.id.totalBill)
+        resultTextTV?.visibility = View.INVISIBLE
+        tipInfoTV?.visibility = View.INVISIBLE
+        totalBillTV?.visibility = View.INVISIBLE
+    }
+    private fun checkInput(input: EditText?): Boolean {
         val inputText = input?.text.toString()
         return when {
             inputText == "" -> {
@@ -133,7 +112,7 @@ class MainActivity : AppCompatActivity() {
             inputText.count() > 7 -> {
                 Toast.makeText(this, "The number is too large!", Toast.LENGTH_SHORT).show()
                 //it works stupid but it works for now
-                input?.setText(inputText.dropLast(1));
+                input?.setText(inputText.dropLast(1))
                 false
             }
             else -> {

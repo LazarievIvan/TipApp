@@ -3,13 +3,15 @@
 
     <!--EN-->
     <!--TextViews-->
-    <string name="instructionTV">Enter your final bill:</string>
-    <string name="rateTV">Rate your service</string>
+    <string name="instructionTV">Enter your bill:</string>
+    <string name="rateTV">Rate the service</string>
     <string name="languageTV">Language</string>
     <string name="settings_menuTV">Settings Menu</string>
     <string name="tipInfoTV">% of your total bill</string>
     <string name="totalBillTV">Your total bill is:</string>
     <string name="resultTextTV">The right tip is:</string>
+    <string name="excellentRateTV">Excellent</string>
+    <string name="poorRateTV">Poor</string>
     <!--Other elements (Buttons, etc...)-->
     <string name="calculateButton">Calculate</string>
     <string name="saveButton">Save</string>
