@@ -51,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         val rateBar: SeekBar? = findViewById(R.id.ratingSeekBar)
         rateBar?.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                rate = (progress+10).toDouble()
                 if(checkInput(billInput)){
-                    rate = (progress+10).toDouble()
                     tip.tipPercent = rate
                     calculate(billAmount, tip.tipPercent)
                 }
