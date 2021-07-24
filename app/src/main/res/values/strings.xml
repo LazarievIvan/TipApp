@@ -23,6 +23,22 @@
     <!--Titles?-->
     <string name="title_activity_settings">Settings</string>
 
-    <!--(!) All russian string values are stored in strings_RU.xml (!)-->
+    <!-- Preference Titles -->
+    <string name="theme_header">Theme</string>
+    <string name="language_header">Language</string>
 
+    <!-- Messages Preferences -->
+    <string name="darkMode_title">Dark mode</string>
+    <string name="language_title">Language</string>
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

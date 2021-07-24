@@ -1,5 +1,7 @@
 package com.example.tipapp
 
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -13,6 +15,7 @@ import com.google.android.gms.ads.MobileAds
 class MainActivity : AppCompatActivity() {
     private var tip = Tip()
     private lateinit var adView: AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -119,5 +122,10 @@ class MainActivity : AppCompatActivity() {
                 true
             }
         }
+    }
+
+    fun openSettings(view: View) {
+        val intent = Intent(this, SettingsActivity::class.java)
+        startActivity(intent)
     }
 }
